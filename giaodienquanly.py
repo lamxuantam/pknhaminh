@@ -59,7 +59,6 @@ def Count_MSBN(df1,df2):
     report['Ca được nhận/xử trí'] = df2.groupby(df2['Timestamp'].dt.date)['MSBN'].nunique()
     return pd.DataFrame(report).reset_index()
 
-@st.cache
 def Load_Data(path1, path2):
     df1 = Read_DF(path1, ncol_1, skip_1, msbn_1, msbs_1).drop(columns='Score').sort_values('Timestamp', ascending=False)
     df1_error = df1[~df1['MSBN'].str.match(regex['MSBN'])]
