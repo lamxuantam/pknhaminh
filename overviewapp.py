@@ -132,7 +132,7 @@ def Create_TextDF (df1, df2, df1_cols, df2_cols):
 
     return text_df[['Timestamp', 'MSBN','Note', 'MSBS','date']].sort_values('Timestamp', ascending=False)
 
-@st.cache
+@st.cache(ttl=300)
 def Load_Data(path1, path2):
     df1 = Read_DF(path1, ncol_1, skip_1, rename_1, msbn_1, msbs_1).drop(columns='Score')
     df2 = Read_DF(path2, ncol_2, skip_2, rename_2, msbn_2, msbs_2)
